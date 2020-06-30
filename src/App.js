@@ -52,7 +52,8 @@ store.subscribe(() => saveToLocalStorage(store.getState()));
 export const App = () => {
 	return (
 		<Provider store={store}>
-			<BrowserRouter>
+    <div className="container">
+    	<BrowserRouter>
 				<Header />
 				<Switch>
 					<Route path="/" exact>
@@ -63,6 +64,8 @@ export const App = () => {
 					</Route>
 				</Switch>
 			</BrowserRouter>
+    </div>
+
 		</Provider>
 	);
 };

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {Link} from 'react-router-dom'
 import { fetchDrinks } from '../reducers/drinkStore'
+import { DrinkCard } from '../components/DrinkCard'
 
 export const DrinksList = () => {
   const drinks = useSelector((state)=>state.drinkStore.drinkList)
@@ -12,9 +13,12 @@ export const DrinksList = () => {
   return(
     <div>
     <h2>Drink List</h2>
+    <div className="row">
     {drinks && drinks.map((drink)=>(
-      <Link to={`/drinks/${drink.idDrink}`}>{drink.strDrink}</Link>
+      <DrinkCard drink={drink} />
     ))}
+    </div>
+ 
     </div>
   )
 }
