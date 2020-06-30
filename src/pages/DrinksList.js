@@ -1,13 +1,20 @@
 import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {Link} from 'react-router-dom'
+import { fetchDrinks } from '../reducers/drinkStore'
 
 export const DrinksList = () => {
-
-  // useEffect(()=>{
-  //   fetch(url)
-  //   .then(res=>res.json())
-  //   .then(json => console.log(json))
-  // },[])
+  const drinks = useSelector((state)=>state.drinkStore.drinkList)
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(fetchDrinks())
+  },[])
   return(
-    <div>drinks</div>
+    <div>
+    <h2>Drink List</h2>
+    {drinks && drinks.map((drink)=>(
+      <Link to={`/drinks/${drink.idDrink}`}>{drink.strDrink}</Link>
+    ))}
+    </div>
   )
 }

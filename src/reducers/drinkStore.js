@@ -1,12 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { statusStore } from './statusStore';
-import {userStore} from './userStore'
+import { commentStore } from './commentStore';
 
 const initialState = {
 	drinkList: [],
 	selectedDrink: {},
-  isLoading: false,
-  errorMessage:""
 };
 
 export const drinkStore = createSlice({
@@ -19,19 +16,14 @@ export const drinkStore = createSlice({
 		setDrink: (state, action) => {
 			state.selectedDrink = action.payload
 		},
-    setLoading: (state, action) => {
-			state.isLoading = action.payload;
-		},
-    setErrorMessage: (state, action) => {
-      state.errorMessage = action.payload
-    }
+
 	}
 });
-export const fetchGames = () => {
-	const GAMES_URL = 'https://aqveduktis-final-project.herokuapp.com/games';
+export const fetchDrinks = () => {
+	const DRINK_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
 	return (dispatch) => {
-		dispatch(statusStore.actions.setLoading(true));
-		fetch(GAMES_URL)
+		dispatch(commentStore.actions.setLoading(true));
+		fetch(DRINK_URL)
 			.then((res) => {
 				if (res.ok) {
 					return res.json();
@@ -41,22 +33,22 @@ export const fetchGames = () => {
 				}
 			})
 			.then((json) => {
-				dispatch(gameStore.actions.addingGames(json));
-				dispatch(statusStore.actions.setLoading(false));
+				dispatch(drinkStore.actions.addingDrinks(json.drinks));
+				dispatch(commentStore.actions.setLoading(false));
 			})
 			.catch((err) => {
 				console.log('error', err);
-				dispatch(statusStore.actions.setErrorMessage('could not fetch the games'));
-				dispatch(statusStore.actions.setLoading(false));
+				dispatch(commentStore.actions.setErrorMessage('could not fetch the games'));
+				dispatch(commentStore.actions.setLoading(false));
 			});
 	};
 };
 
-export const fetchOneGame = (slug) => {
-	const GAMES_URL = `https://aqveduktis-final-project.herokuapp.com/games/${slug}`;
+export const fetchOneDrink = (id) => {
+	const DRINKS_URL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
 	return (dispatch) => {
-		dispatch(statusStore.actions.setLoading(true));
-		fetch(GAMES_URL)
+		dispatch(commentStore.actions.setLoading(true));
+		fetch(DRINKS_URL)
 			.then((res) => {
 				if (res.ok) {
 					return res.json();
@@ -65,14 +57,20 @@ export const fetchOneGame = (slug) => {
 				}
 			})
 			.then((json) => {
-				dispatch(gameStore.actions.setGame(json));
-				dispatch(statusStore.actions.setLoading(false));
+        if (json.drinks) {
+          dispatch(drinkStore.actions.setDrink(json.drinks[0]));
+				  dispatch(commentStore.actions.setLoading(false));
+        } 
+        else {
+          throw new Error('404 not found')
+        }
+				
 			})
 			.catch((err) => {
 				console.log('error', err);
-				dispatch(statusStore.actions.setErrorMessage('could not fetch game'));
-				dispatch(gameStore.actions.setGame({}));
-				dispatch(statusStore.actions.setLoading(false));
+				dispatch(commentStore.actions.setErrorMessage('could not fetch game'));
+				dispatch(drinkStore.actions.setDrink({}));
+				dispatch(commentStore.actions.setLoading(false));
 			});
 	};
 };
