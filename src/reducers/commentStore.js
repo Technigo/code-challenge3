@@ -11,7 +11,7 @@ export const commentStore = createSlice({
 	name: 'commentStore',
 	initialState,
 	reducers: {
-		addingcomment: (state, action) => {
+		addingComment: (state, action) => {
       const comments = state.comments
       comments.push(action.payload)
 			state.comments = comments

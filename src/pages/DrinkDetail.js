@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { fetchOneDrink } from '../reducers/drinkStore'
+import { TextInput } from '../components/TextInput'
 
 const Jumbotron = styled.div`
   background: ${props=> props.backgroundImg ? `url(${props.backgroundImg})`: '#222'};
@@ -20,6 +21,7 @@ const Jumbotron = styled.div`
 export const DrinkDetail = () => {
   const {id} = useParams()
   const drink = useSelector((state)=>state.drinkStore.selectedDrink)
+  const comments = useSelector((state)=>state.commentStore.comments.filter((comment)=>comment.drink === id))
   const ingredients = [drink.strIngredient1, drink.strIngredient2, drink.strIngredient3]
   console.log(ingredients)
   const dispatch = useDispatch()
@@ -39,7 +41,9 @@ export const DrinkDetail = () => {
     
     </div>
     }
-    <p>drink detail {id}</p>
+    <p>Comments from users</p>
+    {comments && <ul>{comments.map((comment)=>(<li>{comment.message}</li>))}</ul>}
+    <TextInput drinkId={id} />
      </div>
   )
 }

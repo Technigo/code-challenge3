@@ -27,7 +27,7 @@ const saveToLocalStorage = (state) => {
 
 const loadFromLocalStorage = () => {
 	try {
-		const serializedState = localStorage.getItem('forum-reduxState');
+		const serializedState = localStorage.getItem('drinks-reduxState');
 		if (serializedState === null) return undefined;
 		return JSON.parse(serializedState);
 	} catch (e) {
