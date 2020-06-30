@@ -1,14 +1,30 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import styled from 'styled-components'
+
+const Card = styled(Link)`
+height: 300px;
+margin: 10px auto;
+
+div {
+  max-height: 100%;
+  background: unset;
+}
+img {
+  object-fit: cover;
+  overflow: hidden;
+}
+`
+
 
 export const DrinkCard = ({ drink }) => {
 	return (
-    		<Link to={`/drinks/${drink.idDrink}`} className="col-lg-4 col-md-6" >
+    		<Card to={`/drinks/${drink.idDrink}`} className="col-lg-4 col-md-6" >
         <div className="card">
           <img src={drink.strDrinkThumb} className="card-img-top" />
           <h2 className="card-title">{drink.strDrink}</h2>
         </div>
-		</Link>
+		</Card>
 
 	);
 };
