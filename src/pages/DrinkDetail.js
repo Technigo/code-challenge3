@@ -6,14 +6,23 @@ import { fetchOneDrink } from '../reducers/drinkStore'
 import { TextInput } from '../components/TextInput'
 
 const Jumbotron = styled.div`
-  background: ${props=> props.backgroundImg ? `url(${props.backgroundImg})`: '#222'};
+  background-color: #222;
+  background-image: ${props=> props.backgroundImg ? `url(${props.backgroundImg})`: '#222'};
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 50px;
   width: 100%;
   height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  
+  p, h2 {
+    color: white;
+    text-shadow: 1px 1px black;
+  }
 `
 
 

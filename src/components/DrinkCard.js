@@ -14,6 +14,15 @@ img {
   object-fit: cover;
   overflow: hidden;
 }
+h2 {
+  font-size: 1.5em;
+
+  }
+
+&:hover {
+  text-decoration: none;
+  opacity: 0.5;
+}
 `
 
 
