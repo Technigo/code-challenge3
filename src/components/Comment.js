@@ -1,22 +1,21 @@
 import React from 'react';
 import {useDispatch} from 'react-redux'
 import {commentStore} from '../reducers/commentStore'
-import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 const Box = styled.div`
-background-color: unset;
-border-color: indigo;
+  background-color: unset;
+  border-color: indigo;
 
-div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-p {
-  font-size: 20px;
-}
+  p {
+    font-size: 20px;
+  }
 `
 
 export const Comment = ({ comment }) => {

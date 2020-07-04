@@ -12,13 +12,12 @@ export const DrinksList = () => {
   },[])
   return(
     <div>
-    <h2>Drink List</h2>
-    <div className="row">
-    {drinks && drinks.map((drink)=>(
-      <DrinkCard drink={drink} />
-    ))}
-    </div>
- 
+      <h2>Drink List</h2>
+      <div className="row">
+        {drinks && drinks.map((drink)=>(
+          <DrinkCard drink={drink} />
+        ))}
+      </div>
     </div>
   )
 }

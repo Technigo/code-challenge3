@@ -4,25 +4,25 @@ import { useDispatch } from 'react-redux'
 import {commentStore} from '../reducers/commentStore'
 
 const Form = styled.form`
-border: 1px solid gray;
-width: fit-content;
-max-width: 100%;
-padding: 10px;
-border-radius: 10px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-align-items: flex-start;
+  border: 1px solid gray;
+  width: fit-content;
+  max-width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 
-label {
-  font-size: 1.5em;
+  label {
+    font-size: 1.5em;
 
-}
-button {
-  margin: 20px 0;
-  background-color: indigo;
-  color: white;
-}
+  }
+  button {
+    margin: 20px 0;
+    background-color: indigo;
+    color: white;
+  }
 `
 
 
