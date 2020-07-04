@@ -50,7 +50,7 @@ export const DrinkDetail = () => {
     
       </div>}
       <h5>Comments from users</h5>
-      {comments && comments.map((comment)=>(<Comment comment={comment} /> ))}
+      {comments && comments.map((comment)=>(<Comment key={comment.message} comment={comment} /> ))}
       <TextInput drinkId={id} />
     </div>
   )

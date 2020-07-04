@@ -52,36 +52,19 @@ store.subscribe(() => saveToLocalStorage(store.getState()));
 export const App = () => {
 	return (
 		<Provider store={store}>
-    <div className="container">
-    	<BrowserRouter>
-				<Header />
-				<Switch>
-					<Route path="/" exact>
-						<DrinksList />
-					</Route>
-					<Route path="/drinks/:id">
-						<DrinkDetail />
-					</Route>
-				</Switch>
-			</BrowserRouter>
-    </div>
-
+      <div className="container">
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route path="/" exact>
+              <DrinksList />
+            </Route>
+            <Route path="/drinks/:id">
+              <DrinkDetail />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </div>
 		</Provider>
 	);
 };
-
-    // {
-    //   "src": "favicon.ico",
-    //   "sizes": "64x64 32x32 24x24 16x16",
-    //   "type": "image/x-icon"
-    // },
-    // {
-    //   "src": "logo192.png",
-    //   "type": "image/png",
-    //   "sizes": "192x192"
-    // },
-    // {
-    //   "src": "logo512.png",
-    //   "type": "image/png",
-    //   "sizes": "512x512"
-    // }
