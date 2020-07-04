@@ -37,7 +37,7 @@ export const DrinkDetail = () => {
   
   useEffect(()=>{
     dispatch(fetchOneDrink(id))
-  },[])
+  },[id, dispatch])
 
   return(
     <div>

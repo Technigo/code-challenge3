@@ -8,7 +8,7 @@ export const DrinksList = () => {
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(fetchDrinks())
-  },[])
+  },[dispatch])
   return(
     <div>
       <h2>Drink List</h2>
