@@ -26,12 +26,12 @@ export const Comment = ({ comment }) => {
   dispatch(commentStore.actions.removingComment(comment));
 }
 	return (
-    	<Box className="card mb-4">
-          <div className="card-body">
-              <p className="card-title">{comment.message}</p>
-              <button onClick={handleClick} className="btn btn-danger">Remove</button>
-          </div>
-      </Box>
+    <Box className="card mb-4">
+      <div className="card-body">
+        <p className="card-title">{comment.message}</p>
+        <button onClick={handleClick} className="btn btn-danger">Remove</button>
+      </div>
+    </Box>
 
 	);
 };
